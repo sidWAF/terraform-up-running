@@ -1,0 +1,29 @@
+2025-07-24T14:33:51.271-0300 [INFO]  Terraform version: 1.11.2
+2025-07-24T14:33:51.272-0300 [DEBUG] using github.com/hashicorp/go-tfe v1.70.0
+2025-07-24T14:33:51.272-0300 [DEBUG] using github.com/hashicorp/hcl/v2 v2.23.0
+2025-07-24T14:33:51.272-0300 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2025-07-24T14:33:51.272-0300 [DEBUG] using github.com/zclconf/go-cty v1.16.0
+2025-07-24T14:33:51.272-0300 [INFO]  Go runtime version: go1.23.3
+2025-07-24T14:33:51.272-0300 [INFO]  CLI args: []string{"terraform", "init"}
+2025-07-24T14:33:51.272-0300 [DEBUG] Attempting to open CLI config file: /Users/bobbymarley378/.terraformrc
+2025-07-24T14:33:51.272-0300 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2025-07-24T14:33:51.272-0300 [INFO]  Loading CLI configuration from /Users/bobbymarley378/.terraform.d/credentials.tfrc.json
+2025-07-24T14:33:51.273-0300 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2025-07-24T14:33:51.273-0300 [DEBUG] ignoring non-existing provider search directory /Users/bobbymarley378/.terraform.d/plugins
+2025-07-24T14:33:51.273-0300 [DEBUG] ignoring non-existing provider search directory /Users/bobbymarley378/Library/Application Support/io.terraform/plugins
+2025-07-24T14:33:51.273-0300 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2025-07-24T14:33:51.274-0300 [INFO]  CLI command args: []string{"init"}
+2025-07-24T14:33:51.814-0300 [DEBUG] checking for provisioner in "."
+2025-07-24T14:33:51.815-0300 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mFailed to query available provider packages[0m
+[31m│[0m [0m
+[31m│[0m [0m[0mCould not retrieve the list of available versions for provider
+[31m│[0m [0mhashicorp/aws: locked provider registry.terraform.io/hashicorp/aws 5.100.0
+[31m│[0m [0mdoes not match configured version constraint 5.31.0; must use terraform
+[31m│[0m [0minit -upgrade to allow selection of new versions
+[31m│[0m [0m
+[31m│[0m [0mTo see which modules are currently depending on hashicorp/aws and what
+[31m│[0m [0mversions are specified, run the following command:
+[31m│[0m [0m    terraform providers
+[31m╵[0m[0m

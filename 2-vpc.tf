@@ -17,6 +17,22 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "us-east-2b" # Must match your provider region
+  map_public_ip_on_launch = true         # For instances to get public IPs
+  tags = {
+    Name = "Public Subnet"
+  }
+}
+
+# Update route table association for the new subnet
+resource "aws_route_table_association" "public_2" {
+  subnet_id      = aws_subnet.public_subnet_2.id
+  route_table_id = aws_route_table.public.id
+}
+
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
   tags = {
@@ -47,7 +63,10 @@ resource "aws_security_group" "instance_sg" {
   description = "Allow SSH and HTTP access"
   vpc_id      = aws_vpc.main.id
 
+
+
   ingress {
+    description = "Allow SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -55,16 +74,24 @@ resource "aws_security_group" "instance_sg" {
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    description = "Allow HTTP"
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"] # Restrict this in production!
   }
 
   egress {
+
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+
+tags = {
+  Name = "Instance Security Group"
+}
+
 }
